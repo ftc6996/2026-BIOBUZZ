@@ -18,6 +18,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 */
 package org.firstinspires.ftc.teamcode;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
+import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection;
@@ -64,6 +65,7 @@ public class MyRobot {
     private CRServo leftIntakeServo = null;
     private CRServo rightIntakeServo = null;
     
+    private Servo RGB_light = null;
     
     private IMU imu = null;
     private YawPitchRollAngles robotOrientation;
@@ -368,10 +370,12 @@ public class MyRobot {
         if (alliance == Constants.kALLIANCE_RED)
         {
             team_alliance = alliance;
+            RGB_light.setPosition(.288);
         }
         else if (alliance == Constants.kALLIANCE_BLUE)
         {
             team_alliance = alliance;
+            RGB_light.setPosition(.611);
         }
         else
         {
@@ -501,7 +505,7 @@ public class MyRobot {
     }
     private void initLights()
     {
-
+        RGB_light = hardwareMap.get(Servo.class, "RGB_light");
     }
     private void initAprilTag() {
 
