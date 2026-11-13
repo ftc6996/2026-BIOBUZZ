@@ -103,7 +103,7 @@ public class Auto1 extends OpMode {
         telemetry.addData("Motors Target", "left (%d), right (%d)", 
         robot.leftDrive.getTargetPosition(), 
         robot.rightDrive.getTargetPosition());
-         telemetry.addData("Motors Current", "left (%d), right (%d)", 
+        telemetry.addData("Motors Current", "left (%d), right (%d)", 
         robot.leftDrive.getCurrentPosition(), 
         robot.rightDrive.getCurrentPosition());       
         switch (current_state) {
@@ -195,7 +195,7 @@ public class Auto1 extends OpMode {
      */
     @Override
     public void stop() {
-
+        // Do nothing
     }
     public void telemetryAlliance() {
         if (robot.team_alliance == Constants.kALLIANCE_BLUE) {

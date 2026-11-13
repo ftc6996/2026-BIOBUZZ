@@ -127,7 +127,9 @@ public class Auto2 extends OpMode {
             case STATE_WAITING: {
                 if (robot.processAprilTag()) {
                     current_state = STATE_SHOOTING;
-                    timer.reset();
+                }
+                else if (timer.seconds() >= 20) {
+                    current_state = STATE_DRIVE_FORWARD;
                 }
                 break;
             }
@@ -135,6 +137,7 @@ public class Auto2 extends OpMode {
                 if (!isStateInitialized) {
                     robot.startLaunch();
                     isStateInitialized = true;
+                    timer.reset();
                 }
                 if (timer.seconds() >= 1) {
                     robot.launch();
@@ -149,7 +152,7 @@ public class Auto2 extends OpMode {
                 break;
             }
             case STATE_DRIVE_FORWARD: {
-                if (robot.drive(0.5, 450, DistanceUnit.MM, 2)) {
+                if (robot.drive(0.5, 320, DistanceUnit.MM, 2)) {
                     current_state = STATE_ROTATE;
                 }
                 break;
@@ -204,4 +207,3 @@ public class Auto2 extends OpMode {
         }
     }
 }
-
